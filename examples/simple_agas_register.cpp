@@ -41,8 +41,8 @@ int hpx_main()
 								boost::lexical_cast<boost::uint64_t>(cmd[2]),
 								static_cast<hpx::naming::id_type::management_type>(1));
                     	// Register the string with the id.
-                    	hpx::register_id_with_basename(
-                   			cmd[1].c_str(), id, 0);
+                    	hpx::register_with_basename(
+                   			cmd[1], id, 0);
                     }
                     else {
                         std::cout << "error: invalid command '"
@@ -52,7 +52,7 @@ int hpx_main()
                 }
                 else if (cmd[0] == "query") {
                     if (cmd.size() == 2) {
-                    	hpx::id_type id = hpx::find_id_from_basename(cmd[1].c_str(), 0).get();
+                    	hpx::id_type id = hpx::find_from_basename(cmd[1], 0).get();
                     	std::cout << cmd[1] << '\t' << id.get_lsb() << std::endl;
                     }
                     else {
